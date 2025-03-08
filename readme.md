@@ -46,6 +46,9 @@ CREATE TABLE IF NOT EXISTS users (
 
 A forma mais fácil de rodar a API é via **Docker Compose**:
 
+**ATENÇÃO: Se optar por não instalar e configurar nada local, e for usar tudo via docker, certifique-se de fazer
+checkout da branch feature/docker_full**
+
 ```bash
 docker-compose up --build
 ```
@@ -90,10 +93,10 @@ A API estará disponível em `http://localhost:8080`.
 
 ```json
 {
-  "email": "usuario@email.com",
-  "userName":"teste",
+  "userName": "teste2",
+  "email": "teste2@email.com",
   "password": "123456",
-  "role": "USER"
+  "role": "01"
 }
 ```
 
@@ -101,7 +104,14 @@ A API estará disponível em `http://localhost:8080`.
 
 ```json
 {
-  "message": "Usuário registrado com sucesso"
+  "success": true,
+  "message": "Usuário registrado com sucesso",
+  "data": {
+    "id": 2,
+    "email": "teste2@email.com",
+    "userName": "teste2",
+    "role": "01"
+  }
 }
 ```
 
@@ -114,7 +124,7 @@ A API estará disponível em `http://localhost:8080`.
 
 ```json
 {
-  "email": "usuario@email.com",
+  "email": "teste2@email.com",
   "password": "123456"
 }
 ```
@@ -123,7 +133,14 @@ A API estará disponível em `http://localhost:8080`.
 
 ```json
 {
-  "message": "Login bem-sucedido! Usuário: teste, Perfil: USER"
+  "success": true,
+  "message": "Login bem-sucedido",
+  "data": {
+    "id": 2,
+    "email": "teste2@email.com",
+    "userName": "teste2",
+    "role": "01"
+  }
 }
 ```
 
@@ -131,7 +148,9 @@ A API estará disponível em `http://localhost:8080`.
 
 ```json
 {
-  "error": "Email ou senha inválidos"
+  "success": false,
+  "message": "Email ou senha inválidos",
+  "data": null
 }
 ```
 
