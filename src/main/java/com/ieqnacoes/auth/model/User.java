@@ -1,5 +1,6 @@
 package com.ieqnacoes.auth.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -9,8 +10,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonProperty("username")
     @Column(nullable = false)
-    private String userName;
+    private String username;
     @Column(nullable = false, unique = true)
     private String email;
 
@@ -24,9 +26,9 @@ public class User {
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public String getUserName() { return userName; }
+    public String getUserName() { return username; }
 
-    public void setUserName(String userName) { this.userName = userName; }
+    public void setUserName(String username) { this.username = username; }
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
     public String getPassword() { return password; }
