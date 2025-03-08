@@ -5,8 +5,8 @@ COPY pom.xml .
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-# Usando a imagem oficial do OpenJDK 21
-FROM openjdk:21-jdk-slim
+# Usando a imagem oficial do OpenJDK
+FROM openjdk:17-jdk-slim
 
 # Definindo o diretório de trabalho dentro do container
 WORKDIR /app
